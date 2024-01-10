@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    networks:
+      - default-network
+
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: ./app
+    depends_on:
+      - db
+    networks:
+      - default-network
+
+  db:
+    build:
+      context: ./db
+    container_name: db
+    restart: always
+    tty: true
+    networks:
+      - default-network
+    volumes:
+      - ./db/data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+networks:
+  default-network:
+    driver: bridge
