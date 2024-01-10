@@ -12,8 +12,11 @@ O retorno da aplicação Node.js para o Nginx será a lista de nomes cadastrados
 
 Nosso ambiente é completamente baseado em Docker. Assim, levantá-lo é extremamente fácil com o docker-compose.
 
-Rode o seguinte comando na base do projeto\
+Os passos seguintes vão guiá-lo em como configurar e rodar o projeto:
 
-docker-compose up -d
-
-A aplicação estará disponível na porta 8080 do seu host.
+1. Primeiro, você precisa clonar o repositório. Digite o seguinte comando no terminal:
+2. git clone https://github.com/HaroldoFV/node.git
+3. Navegue até a pasta recém-clonada com o comando:
+4. cd node
+5. docker-compose up -d
+6. Agora, a aplicação deve estar rodando e disponível na porta 8080 do seu host.
