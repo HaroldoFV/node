@@ -18,10 +18,19 @@ services:
     restart: always
     build:
       context: ./app
+    command:
+      [
+        "sh",
+        "-c",
+        "dockerize -wait tcp://db:3306 -timeout 20s && node index.js",
+      ]
     depends_on:
       - db
     networks:
       - default-network
+    tty: true
+    volumes:
+      - ./app:/usr/src/app
 
   db:
     build:
