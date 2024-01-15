@@ -30,7 +30,8 @@ services:
       - default-network
     tty: true
     volumes:
-      - ./app:/usr/src/app
+      - ./app:/app
+      - /app/node_modules
 
   db:
     build:
